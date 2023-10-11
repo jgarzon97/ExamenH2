@@ -26,7 +26,7 @@ CREATE TABLE Vehiculo (
     tipo_registro VARCHAR(100),
     descripcion VARCHAR(100),
     precio DECIMAL(10, 2),
-    anticipo DECIMAL(10, 2),
+    anticipo DECIMAL(10, 2) DEFAULT 0,
     id_usuario INT,
     FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario)
 );
