@@ -1,1 +1,41 @@
-<p>inv-vehiculos works!</p>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Vehículos</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="container-fluid">
+                <form class="d-flex" role="search" (ngSubmit)="buscarVehiculos()">
+                    <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search"
+                        [(ngModel)]="busqueda" name="busqueda" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" style="margin-left: 10px;"
+                        (click)="buscarVehiculos()">Search</button>
+                    <button class="btn btn-outline-danger my-2 my-sm-0" type="button" style="margin-left: 10px;"
+                        (click)="logout()">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row" style="background-color: rgb(100, 100, 100);">
+        <div style="padding: 10px;" class="col" *ngFor=" let vehiculo of vehiculos; let i = index">
+            <div class="card" style="width: 250px; height: 250px; background-color: rgb(195, 215, 160);">
+                <div class="card-body">
+                    <h5 class="card-title"><small class="text-body-secondary">#
+                        </small> {{vehiculo.codigo}} </h5>
+                    <p class="card-text" style="text-align: justify;"><small class="text-body-secondary">Placa:
+                        </small>{{vehiculo.placa}} </p>
+                    <p class="card-text"><small class="text-body-secondary">Tipo de registro:
+                        </small>{{vehiculo.tipo_registro}}</p>
+                    <p class="card-text"><small class="text-body-secondary">Vehículo:
+                        </small>{{vehiculo.descripcion}}</p>
+                    <p class="card-text"><small class="text-body-secondary">Precio:
+                        </small>{{vehiculo.precio}}</p>
+                    <p class="card-text"><small class="text-body-secondary">Anticipo:
+                        </small>{{vehiculo.anticipo}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
