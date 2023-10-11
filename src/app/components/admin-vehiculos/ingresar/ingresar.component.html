@@ -1,1 +1,59 @@
-<p>ingresar works!</p>
+<div class="container text-center">
+    <h3 class="text-center" style="padding: 20px;"><span class="badge bg-secondary">Ingresar nuevo Vehículo</span></h3>
+    <form class="was-validated row align-items-start">
+        <div class="col-6 col-sm-4">
+            <label for="validationDefault01" class="form-label">Codigo</label>
+            <input type="number" class="form-control" id="validationDefault01" min="0" required>
+            <div class="invalid-feedback">
+                Por favor llene el campo.
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-4">
+            <label for="validationDefault02" class="form-label">Placa</label>
+            <input type="text" class="form-control" id="validationDefault02" maxlength="6" minlength="6" required>
+            <div class="invalid-feedback">
+                Por favor llene el campo.
+            </div>
+        </div>
+
+        <div class="col-6 col-sm-4">
+            <label for="validationServer03" class="form-label">Tipo de registro</label>
+            <select class="form-select" required aria-label="select example" [(ngModel)]="tipoRegistro" name="tipoRegistro">
+                <option value="">Seleccione una opción</option>
+                <option value="preventivo">mantenimiento preventivo</option>
+                <option value="correctivo">mantenimiento correctivo</option>
+                <option value="flete">flete</option>
+            </select>
+            <div class="invalid-feedback">Seleccione una opción.</div>
+        </div>
+
+        <div class="col-4 col-sm-4" *ngIf="tipoRegistro === 'flete'">
+            <label for="validationDefault06" class="form-label">Anticipo</label>
+            <input type="number" class="form-control" id="validationDefault06" step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Por favor llene el campo.
+            </div>
+        </div>
+
+        <div class="col-4 col-sm-4">
+            <label for="validationDefault04" class="form-label">Descripcion</label>
+            <input type="text" class="form-control" id="validationDefault04" required>
+            <div class="invalid-feedback">
+                Por favor llene el campo.
+            </div>
+        </div>
+
+        <div class="col-4 col-sm-4">
+            <label for="validationDefault05" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="validationDefault05" step="0.01" min="0" required>
+            <div class="invalid-feedback">
+                Por favor llene el campo.
+            </div>
+        </div>
+
+        <div class="mb-3" style="padding-top: 20px;">
+            <button class="btn btn-primary" type="submit" disabled>Submit form</button>
+        </div>
+    </form>
+</div>

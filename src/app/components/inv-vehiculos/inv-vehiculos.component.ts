@@ -18,6 +18,7 @@ export class InvVehiculosComponent {
   ngOnInit(): void {
     const isAuthenticated = localStorage.getItem('rol');
     if (!isAuthenticated) {
+      console.log('No puedes ingresar, Inicia sesión');
       this.router.navigate(['/login']);
     } else {
       this.visualizar();

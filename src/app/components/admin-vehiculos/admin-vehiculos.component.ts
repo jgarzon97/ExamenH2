@@ -19,6 +19,7 @@ export class AdminVehiculosComponent {
   ngOnInit(): void {
     const isAuthenticated = localStorage.getItem('rol');
     if (!isAuthenticated) {
+      console.log('No puedes ingresar, Inicia sesión');
       this.router.navigate(['/login']);
     } else {
       this.visualizar();
@@ -33,6 +34,10 @@ export class AdminVehiculosComponent {
     });
   }
 
+  addVehiculo() {
+    this.router.navigate(['/admin/vehiculo/ingresar']);
+  }
+
   buscarVehiculos() {
     if (this.busqueda.trim() === '') {
       this.visualizar();
@@ -44,13 +49,13 @@ export class AdminVehiculosComponent {
   Eliminar(dato: number) {
     console.log(dato);
     this.vehiculosService.deleteVehiculo(dato).subscribe(response => {
-      console.log('id=' + dato + ' ha sido eliminado');
+      alert('El Vehículo ' + dato + ' ha sido eliminado');
       this.visualizar();
     }, error => { console.log(error); });
   }
 
   Modificar(idx: number) {
-    this.router.navigate(['/registrar', idx]);
+    this.router.navigate(['/admin/vehiculos/', idx]);
   }
 
   logout() {
