@@ -47,13 +47,13 @@ export class LoginComponent {
             localStorage.setItem('nombre', response.data.nombre);
             localStorage.setItem('apellido', response.data.apellido);
             this.fakeloading();
-            console.log('Ingreso exitoso.');
+            alert('Ingreso exitoso.');
           } else {
             this.form.reset();
           }
         })
         .catch((error) => {
-          console.log('Error en el Ingreso.');
+          alert('Error en el Ingreso.');
           this.form.reset();
         });
     }

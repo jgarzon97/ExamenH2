@@ -10,7 +10,6 @@
         <div style="padding-bottom: 10px;" class="form-floating mb-3">
             <input formControlName="placa" type="text" class="form-control" placeholder="" maxlength="6" minlength="6">
             <label for="floatingInput">Placa</label>
-
         </div>
         <!-- Registro -->
         <div style="padding-bottom: 20px;" class="form-floating">
@@ -21,6 +20,11 @@
             </select>
             <label for="floatingSelect">Tipo de registro</label>
         </div>
+        <!-- Anticipo -->
+        <div style="padding-bottom: 10px;" class="form-floating">
+            <input formControlName="anticipo" type="number" class="form-control" placeholder="" step="0.01" min="0">
+            <label for="floatingTextarea">Anticipo</label>
+        </div>
         <!-- Descripcion -->
         <div style="padding-bottom: 10px;" class="form-floating">
             <input formControlName="descripcion" type="text" class="form-control" placeholder="">
@@ -28,13 +32,8 @@
         </div>
         <!-- Precio -->
         <div style="padding-bottom: 10px;" class="form-floating">
-            <input formControlName="descripcion" type="number" class="form-control" placeholder="" step="0.01" min="0">
-            <label for="floatingTextarea">Descripcion</label>
-        </div>
-        <!-- Anticipo -->
-        <div style="padding-bottom: 10px;" class="form-floating">
-            <input formControlName="descripcion" type="number" class="form-control" placeholder="" step="0.01" min="0">
-            <label for="floatingTextarea">Descripcion</label>
+            <input formControlName="precio" type="number" class="form-control" placeholder="" step="0.01" min="0">
+            <label for="floatingTextarea">Precio</label>
         </div>
         <div style="padding-bottom: 10px;">
             <button type="submit" class="btn btn-primary btn-block">Registrar</button>

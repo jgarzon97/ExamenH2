@@ -16,6 +16,11 @@ export class VehiculosService {
     return this.http.get<any[]>(`${this.apiUrl}/vehiculos`);
   }
 
+  // Buscar por ID de Vehiculo
+  getVehiculo(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/vehiculo/${id}`);
+  }
+
   // Crear un Vehiculo
   createVehiculo(vehiculoData: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/vehiculo`, vehiculoData);

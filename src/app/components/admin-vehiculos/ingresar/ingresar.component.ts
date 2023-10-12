@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { VehiculosService } from 'src/app/services/vehiculos.service';
 
 @Component({
@@ -14,17 +14,16 @@ export class IngresarComponent {
   vehiculo!: FormGroup;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
     private vehiculosService: VehiculosService,
     private router: Router,
     private fb: FormBuilder) {
     this.vehiculo = this.fb.group({
       codigo: '',
       placa: '',
-      tipo_registro: 'Seleccione el registro',
+      tipo_registro: '',
       descripcion: '',
       precio: '',
-      anticipo: '',
+      anticipo: 0,
       id_usuario: ''
     });
   }
@@ -35,23 +34,21 @@ export class IngresarComponent {
   }
 
   ngOnInit(): void {
-    this.getUserIdFromLocalStorage();
+    const userId = this.getUserIdFromLocalStorage();
+    if (userId) {
+      this.vehiculo.get('id_usuario')?.setValue(userId);
+    }
   }
 
   onSubmit() {
     const data = this.vehiculo.value;
     console.log(data);
-      this.vehiculosService.createVehiculo(data).subscribe(
-        response => {
-          console.log("Registrado: " + data);
-          window.location.href = '/vehiculos';
-        }, error => {
-          console.log("Error: " + error)
-        }
-      );
-  }
-
-  volver() {
-    this.router.navigate(['vehiculos']);
+    this.vehiculosService.createVehiculo(data).subscribe(
+      response => {
+        window.location.href = '/admin/vehiculos';
+      }, error => {
+        console.log("Error: " + error)
+      }
+    );
   }
 }
