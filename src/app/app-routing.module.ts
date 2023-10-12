@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin/vehiculos', component: AdminVehiculosComponent },
   { path: 'admin/vehiculo/ingresar', component: IngresarComponent },
-  { path: 'admin/vehiculo/:id_vehiculo', component: IngresarComponent },
+  { path: 'admin/vehiculo/ingresar/:id_vehiculo', component: IngresarComponent },
   { path: 'inv/vehiculos', component: InvVehiculosComponent },
   { path: '**', component: NotFoundComponent }
 ];

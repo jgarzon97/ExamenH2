@@ -1,5 +1,6 @@
 <div class="fondo" style="width: 500px; padding-top: 10px;">
-    <h1 style="padding-bottom: 20px;">Registrar Vehículo</h1>
+    <h1 *ngIf="activo" style="padding-bottom: 20px;">Registrar Heroe</h1>
+    <h1 *ngIf="!activo" style="padding-bottom: 20px;">Modificar Heroe</h1>
     <form [formGroup]="vehiculo" (ngSubmit)="onSubmit()">
         <!-- Código -->
         <div style="padding-bottom: 10px;" class="form-floating mb-3">
@@ -36,7 +37,8 @@
             <label for="floatingTextarea">Precio</label>
         </div>
         <div style="padding-bottom: 10px;">
-            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+            <button *ngIf="activo" type="submit" class="btn btn-outline-success btn-block">Registrar</button>
+            <button *ngIf="!activo" type="submit" class="btn btn-outline-success btn-block">Modificar</button>
         </div>
     </form>
 </div>

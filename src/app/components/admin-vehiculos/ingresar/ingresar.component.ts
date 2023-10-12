@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VehiculosService } from 'src/app/services/vehiculos.service';
 
 @Component({
@@ -9,14 +9,17 @@ import { VehiculosService } from 'src/app/services/vehiculos.service';
   styleUrls: ['./ingresar.component.css']
 })
 
-export class IngresarComponent {
-
-  vehiculo!: FormGroup;
+export class IngresarComponent implements OnInit {
+  vehiculo: FormGroup;
+  activo: boolean = true;
+  vehiculos: any;
 
   constructor(
     private vehiculosService: VehiculosService,
-    private router: Router,
-    private fb: FormBuilder) {
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.vehiculo = this.fb.group({
       codigo: '',
       placa: '',
@@ -26,6 +29,15 @@ export class IngresarComponent {
       anticipo: 0,
       id_usuario: ''
     });
+
+    if (this.activatedRoute.snapshot.params['id_vehiculo'] !== undefined) {
+      this.activo = false;
+      const id = this.activatedRoute.snapshot.params['id_vehiculo'];
+      console.log('ID del vehículo a editar: ' + id);
+      this.vehiculosService.getVehiculo(id).subscribe(vehiculo => {
+        this.vehiculo.patchValue(vehiculo);
+      });
+    } else this.activo = true;
   }
 
   getUserIdFromLocalStorage(): string | null {
@@ -42,13 +54,26 @@ export class IngresarComponent {
 
   onSubmit() {
     const data = this.vehiculo.value;
-    console.log(data);
-    this.vehiculosService.createVehiculo(data).subscribe(
-      response => {
-        window.location.href = '/admin/vehiculos';
-      }, error => {
-        console.log("Error: " + error)
-      }
-    );
+    if (!this.activo) {
+      this.vehiculosService.updateVehiculo(data.id_vehiculo, data).subscribe(
+        response => {
+          console.log("Modificado: " + JSON.stringify(data));
+          this.router.navigate(['/admin/vehiculos']);
+        },
+        error => {
+          console.error("Error: " + JSON.stringify(error));
+        }
+      );
+    } else {
+      this.vehiculosService.createVehiculo(data).subscribe(
+        response => {
+          console.log("Registrado: " + JSON.stringify(data));
+          this.router.navigate(['/admin/vehiculos']);
+        },
+        error => {
+          console.error("Error: " + JSON.stringify(error));
+        }
+      );
+    }
   }
 }

@@ -54,8 +54,8 @@ export class AdminVehiculosComponent {
     }, error => { console.log(error); });
   }
 
-  Modificar(idx: number) {
-    this.router.navigate(['/admin/vehiculos/', idx]);
+  Modificar(id_vehiculo: number) {
+    this.router.navigate(['admin/vehiculo/ingresar/', id_vehiculo]);
   }
 
   logout() {
