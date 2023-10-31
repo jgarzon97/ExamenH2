@@ -1,44 +1,49 @@
-<div class="fondo" style="width: 500px; padding-top: 10px;">
-    <h1 *ngIf="activo" style="padding-bottom: 20px;">Registrar Heroe</h1>
-    <h1 *ngIf="!activo" style="padding-bottom: 20px;">Modificar Heroe</h1>
-    <form [formGroup]="vehiculo" (ngSubmit)="onSubmit()">
-        <!-- Código -->
-        <div style="padding-bottom: 10px;" class="form-floating mb-3">
-            <input formControlName="codigo" type="number" class="form-control" placeholder="">
-            <label for="floatingInput">Código</label>
-        </div>
-        <!-- Placa -->
-        <div style="padding-bottom: 10px;" class="form-floating mb-3">
-            <input formControlName="placa" type="text" class="form-control" placeholder="" maxlength="6" minlength="6">
-            <label for="floatingInput">Placa</label>
-        </div>
-        <!-- Registro -->
-        <div style="padding-bottom: 20px;" class="form-floating">
-            <select formControlName="tipo_registro" class="form-select" aria-label="Floating label select example">
-                <option value="preventivo">Preventivo</option>
-                <option value="correctivo">Correctivo</option>
-                <option value="flete">Flete</option>
-            </select>
-            <label for="floatingSelect">Tipo de registro</label>
-        </div>
-        <!-- Anticipo -->
-        <div style="padding-bottom: 10px;" class="form-floating">
-            <input formControlName="anticipo" type="number" class="form-control" placeholder="" step="0.01" min="0">
-            <label for="floatingTextarea">Anticipo</label>
-        </div>
-        <!-- Descripcion -->
-        <div style="padding-bottom: 10px;" class="form-floating">
-            <input formControlName="descripcion" type="text" class="form-control" placeholder="">
-            <label for="floatingTextarea">Descripcion</label>
-        </div>
-        <!-- Precio -->
-        <div style="padding-bottom: 10px;" class="form-floating">
-            <input formControlName="precio" type="number" class="form-control" placeholder="" step="0.01" min="0">
-            <label for="floatingTextarea">Precio</label>
-        </div>
-        <div style="padding-bottom: 10px;">
-            <button *ngIf="activo" type="submit" class="btn btn-outline-success btn-block">Registrar</button>
-            <button *ngIf="!activo" type="submit" class="btn btn-outline-success btn-block">Modificar</button>
-        </div>
-    </form>
+<div class="d-flex align-items-center justify-content-center" style="padding-top: 10px;">
+    <h1 *ngIf="activo" style="padding-bottom: 20px;">Registrar Vehiculo</h1>
+    <h1 *ngIf="!activo" style="padding-bottom: 20px;">Modificar Vehiculo</h1>
+</div>
+
+<div class="fondo d-flex align-items-center justify-content-center">
+    <div class="w-25">
+        <form [formGroup]="vehiculo" (ngSubmit)="onSubmit()" class="text-center">
+            <!-- Código -->
+            <div style="padding-bottom: 10px;" class="form-floating mb-3">
+                <input formControlName="codigo" type="number" class="form-control" placeholder="">
+                <label for="floatingInput">Código</label>
+            </div>
+            <!-- Código -->
+            <div style="padding-bottom: 10px;" class="form-floating mb-3">
+                <input formControlName="placa" type="text" class="form-control" placeholder="" maxlength="6" minlength="6">
+                <label for="floatingInput">Placa</label>
+            </div>
+            <!-- Registro -->
+            <div style="padding-bottom: 20px;" class="form-floating">
+                <select formControlName="tipo_registro" class="form-select" aria-label="Floating label select example">
+                    <option value="preventivo">Preventivo</option>
+                    <option value="correctivo">Correctivo</option>
+                    <option value="flete">Flete</option>
+                </select>
+                <label for="floatingSelect">Tipo de registro</label>
+            </div>
+            <!-- Anticipo -->
+            <div style="padding-bottom: 10px;" class="form-floating mb-3">
+                <input formControlName="anticipo" type="number" class="form-control" placeholder="" step="0.01" min="0">
+                <label for="floatingTextarea">Anticipo</label>
+            </div>
+            <!-- Descripcion -->
+            <div style="padding-bottom: 10px;" class="form-floating mb-3">
+                <input formControlName="descripcion" type="text" class="form-control" placeholder="">
+                <label for="floatingTextarea">Descripcion</label>
+            </div>
+            <!-- Precio -->
+            <div style="padding-bottom: 10px;" class="form-floating mb-3">
+                <input formControlName="precio" type="number" class="form-control" placeholder="" step="0.01" min="0">
+                <label for="floatingTextarea">Precio</label>
+            </div>
+            <div style="padding-bottom: 10px;">
+                <button *ngIf="activo" type="submit" class="btn btn-primary btn-block">Registrar</button>
+                <button *ngIf="!activo" type="submit" class="btn btn-success btn-block">Modificar</button>
+            </div>
+        </form>
+    </div>
 </div>

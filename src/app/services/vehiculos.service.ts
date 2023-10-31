@@ -13,7 +13,7 @@ export class VehiculosService {
 
   // Obtener lista de Vehiculos
   getVehiculos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/vehiculos`);
+    return this.http.get<any>(`${this.apiUrl}/vehiculos`);
   }
 
   // Buscar por ID de Vehiculo
@@ -22,12 +22,12 @@ export class VehiculosService {
   }
 
   // Crear un Vehiculo
-  createVehiculo(vehiculoData: any): Observable<any> {
+  createVehiculo(vehiculoData: []): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/vehiculo`, vehiculoData);
   }
 
   // Actualizar un Vehiculo
-  updateVehiculo(id: number, vehiculoData: any): Observable<any> {
+  updateVehiculo(id: number, vehiculoData: []): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/vehiculo/${id}`, vehiculoData);
   }
 

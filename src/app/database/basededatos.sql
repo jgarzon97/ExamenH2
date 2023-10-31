@@ -41,7 +41,7 @@ INSERT INTO Usuario (email, pass, nombre, apellido, estado, id_rol) VALUES
 ('jorgegarzon@gmail.com', 'admin', 'Jorge', 'Garzón', 'Activo', 1);
 
 -- Usuarios con rol "invitado"
-INSERT INTO Usuario (mail, pass, nombre, apellido, estado, id_rol) VALUES
+INSERT INTO Usuario (email, pass, nombre, apellido, estado, id_rol) VALUES
 ('invitado@gmail.com', '11111', 'invitado1', 'invitado1', 'Activo', 2);
 
 --
